@@ -9,8 +9,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, size = "medium", isFluid = false, ...rest }, ref) => {
-    const variants = cn(styles.button, {
-      className: !!className,
+    const variants = cn(styles.button, className, {
       [styles.small]: size === "small",
       [styles.medium]: size === "medium",
       [styles.big]: size === "big",

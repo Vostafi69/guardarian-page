@@ -1,20 +1,20 @@
-import { forwardRef, HTMLAttributes } from "react";
+import { AnchorHTMLAttributes, forwardRef } from "react";
 import cn from "classnames";
 import styles from "./logo.module.scss";
 import logo from "../../../assets/images/logo.svg";
 
-interface LogoProps extends HTMLAttributes<HTMLDivElement> {}
+interface LogoProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  logoLink?: string;
+}
 
-export const Logo = forwardRef<HTMLDivElement, LogoProps>(
-  ({ className, ...rest }, ref) => {
-    const variants = cn(styles.logo, {
-      className: !!className,
-    });
+export const Logo = forwardRef<HTMLAnchorElement, LogoProps>(
+  ({ className, logoLink = "#", ...rest }, ref) => {
+    const variants = cn(styles.logo, className);
 
     return (
-      <div className={variants} ref={ref} {...rest}>
+      <a className={variants} href={logoLink} ref={ref} {...rest}>
         <img src={logo} alt="Guardarian logo" />
-      </div>
+      </a>
     );
   },
 );
