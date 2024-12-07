@@ -57,6 +57,10 @@ export const Home: FC = () => {
               Guardarian powers the leading projects in Web3 industry.
             </p>
           </div>
+          <div>Slider</div>
+          <Button className={styles.trustButton}>
+            Join our partner family
+          </Button>
         </div>
       </section>
     </main>

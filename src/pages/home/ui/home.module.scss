@@ -78,5 +78,19 @@
   & .trustInner {
     @include container;
     padding: var(--gd-container-y) var(--gd-container-x);
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  & .trustHeading {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+  }
+
+  & .trustButton {
+    width: 27.2rem;
+    margin: 0 auto;
   }
 }
