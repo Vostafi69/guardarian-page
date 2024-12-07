@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Header } from "@/widgets";
+import { Header, Footer } from "@/widgets";
 import styles from "./layout.module.scss";
 
 interface LayoutProps {
@@ -11,6 +11,7 @@ export const Layout: FC<LayoutProps> = ({ children }) => {
     <div className={styles.layout}>
       <Header />
       {children}
+      <Footer />
     </div>
   );
 };
