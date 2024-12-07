@@ -3,9 +3,7 @@ import cn from "classnames";
 import styles from "./logo.module.scss";
 import logo from "../../../assets/images/logo.svg";
 
-interface LogoProps extends HTMLAttributes<HTMLDivElement> {
-  size: "small" | "big";
-}
+interface LogoProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Logo = forwardRef<HTMLDivElement, LogoProps>(
   ({ className, ...rest }, ref) => {

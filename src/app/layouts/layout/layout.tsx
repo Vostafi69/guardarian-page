@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { Header } from "../../../widgets/header/ui/header";
+import { Header } from "@/widgets/header";
 import styles from "./layout.module.scss";
 
 interface LayoutProps {
