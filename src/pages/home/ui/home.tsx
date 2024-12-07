@@ -40,14 +40,25 @@ export const Home: FC = () => {
         <Button className={styles.benefitsButton}>Exchange</Button>
       </section>
       <section className={styles.exchange}>
-        <Title titleType="h2">
+        <Title className={styles.exchangeTitle} titleType="h2">
           How to exchange BTC to EUR{" "}
           <span className={styles.blue}>for business</span>
         </Title>
         <ExchangeSteps />
         <Button isFluid>Start making exchanges</Button>
       </section>
-      <section className={styles.trust}></section>
+      <section className={styles.trust}>
+        <div className={styles.trustInner}>
+          <div className={styles.trustHeading}>
+            <Title titleType="h2">
+              Trusted by <span className={styles.blue}>the best</span>
+            </Title>
+            <p className={styles.trustSubHeading}>
+              Guardarian powers the leading projects in Web3 industry.
+            </p>
+          </div>
+        </div>
+      </section>
     </main>
   );
 };

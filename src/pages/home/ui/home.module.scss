@@ -65,4 +65,18 @@
   display: flex;
   flex-direction: column;
   gap: 4rem;
+
+  & .exchangeTitle {
+    text-align: center;
+  }
+}
+
+.trust {
+  background-color: var(--gd-grey-light);
+  margin-top: var(--gd-container-y);
+
+  & .trustInner {
+    @include container;
+    padding: var(--gd-container-y) var(--gd-container-x);
+  }
 }
