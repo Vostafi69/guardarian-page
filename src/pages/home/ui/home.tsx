@@ -2,10 +2,9 @@ import { FC } from "react";
 import { PaymentsList } from "./paymentList";
 import { Button } from "@/shared/ui/button";
 import { Title } from "@/shared/ui/title";
-import { Benefits } from "@/widgets/benefits";
+import { Benefits, ExchangeSteps } from "@/widgets";
 import bg from "@/assets/images/bg.png";
 import styles from "./home.module.scss";
-import { ExchangeSteps } from "@/widgets/exchangeSteps";
 
 export const Home: FC = () => {
   return (
