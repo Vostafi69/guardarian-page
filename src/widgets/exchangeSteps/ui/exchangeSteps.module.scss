@@ -1,0 +1,32 @@
+.exchangeSteps {
+  display: flex;
+  flex-direction: row;
+  gap: 2.4rem;
+
+  & .card {
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem;
+    padding-bottom: 0;
+    border: none;
+  }
+
+  & .cardTitle {
+    font-size: 2.4rem;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+  }
+
+  & .cardContent {
+    color: var(--gd-grey-dark);
+    font-size: 1.8rem;
+    margin-top: 1.6rem;
+    margin-bottom: 4rem;
+    text-align: center;
+  }
+
+  & .cardFooter {
+    margin-top: auto;
+  }
+}

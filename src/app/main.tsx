@@ -1,7 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./global.scss";
-import "./reset.scss";
+import "./styles/reset.scss";
+import "./styles/global.scss";
 import { Home } from "../pages";
 import { Layout } from "./layouts/layout";
 

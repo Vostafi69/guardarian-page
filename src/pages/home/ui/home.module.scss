@@ -5,6 +5,7 @@
   margin-bottom: var(--gd-container-y);
 
   & .heroInner {
+    @include container;
     padding: 0 var(--gd-container-x);
     margin-top: 7.2rem;
     position: relative;
@@ -46,6 +47,7 @@
 }
 
 .benefits {
+  @include container;
   padding: var(--gd-container-y) var(--gd-container-x);
   display: flex;
   flex-direction: column;
@@ -55,4 +57,12 @@
     width: 36.2rem;
     margin: 0 auto;
   }
+}
+
+.exchange {
+  @include container;
+  padding: var(--gd-container-y) var(--gd-container-x);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }

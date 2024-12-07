@@ -14,4 +14,11 @@ export default defineConfig({
     host: true,
     port: 3000,
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@use "@/app/styles/mixins" as *;',
+      },
+    },
+  },
 });

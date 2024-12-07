@@ -1,0 +1,10 @@
+@mixin container {
+  max-width: var(--gd-container-w);
+  margin: 0 auto;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

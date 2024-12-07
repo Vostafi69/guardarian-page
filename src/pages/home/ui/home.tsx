@@ -5,6 +5,7 @@ import { Title } from "@/shared/ui/title";
 import { Benefits } from "@/widgets/benefits";
 import bg from "@/assets/images/bg.png";
 import styles from "./home.module.scss";
+import { ExchangeSteps } from "@/widgets/exchangeSteps";
 
 export const Home: FC = () => {
   return (
@@ -29,7 +30,7 @@ export const Home: FC = () => {
           </div>
           <div className={styles.widget}></div>
         </div>
-        <img className={styles.background} src={bg} alt="Задний фон" />
+        <img className={styles.background} src={bg} alt="Background image" />
       </section>
       <section className={styles.benefits}>
         <Title titleType="h2">
@@ -38,7 +39,14 @@ export const Home: FC = () => {
         <Benefits />
         <Button className={styles.benefitsButton}>Exchange</Button>
       </section>
-      <section className={styles.exchange}></section>
+      <section className={styles.exchange}>
+        <Title titleType="h2">
+          How to exchange BTC to EUR{" "}
+          <span className={styles.blue}>for business</span>
+        </Title>
+        <ExchangeSteps />
+        <Button isFluid>Start making exchanges</Button>
+      </section>
       <section className={styles.trust}></section>
     </main>
   );

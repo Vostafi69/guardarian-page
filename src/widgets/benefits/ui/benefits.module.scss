@@ -20,9 +20,7 @@
       padding: 0 0.8rem;
       font-size: 3.5rem;
       line-height: 1.8rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      @include flex-center;
     }
   }
 
@@ -40,8 +38,6 @@
     border-radius: 0.5rem;
     width: 7.6rem;
     height: 7.6rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex-center;
   }
 }
