@@ -1,0 +1,58 @@
+.hero {
+  position: relative;
+  height: 61.2rem;
+  overflow: hidden;
+  margin-bottom: var(--gd-container-y);
+
+  & .heroInner {
+    padding: 0 var(--gd-container-x);
+    margin-top: 7.2rem;
+    position: relative;
+    z-index: 5;
+  }
+
+  & .intro {
+    max-width: 55.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  & .text {
+    font-size: 2rem;
+    line-height: 1.2;
+    max-width: 45.5rem;
+  }
+
+  & .background {
+    top: 0;
+    position: absolute;
+    object-fit: cover;
+    position: top right;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .paymentList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.4rem;
+  }
+}
+
+.blue {
+  color: var(--gd-blue-light);
+}
+
+.benefits {
+  padding: var(--gd-container-y) var(--gd-container-x);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  & .benefitsButton {
+    width: 36.2rem;
+    margin: 0 auto;
+  }
+}
