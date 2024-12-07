@@ -1,0 +1,9 @@
+.header {
+  height: 8.5rem;
+  width: 100%;
+  background-color: var(--gd-white);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 var(--gd-container-x);
+}

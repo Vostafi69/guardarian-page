@@ -3,9 +3,12 @@ import { createRoot } from "react-dom/client";
 import "./global.scss";
 import "./reset.scss";
 import { Home } from "../pages";
+import { Layout } from "./layouts/layout";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Home />
+    <Layout>
+      <Home />
+    </Layout>
   </StrictMode>,
 );

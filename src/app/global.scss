@@ -1,0 +1,44 @@
+:root {
+  --gd-white: #ffffff;
+  --gd-black: #000000;
+  --gd-blue-light: #4c9de8;
+  --gd-blue: #01268a;
+  --gd-blue-dark: #1b2125;
+  --gd-grey: #e4e4e4;
+  --gd-grey-light: #f8f8f8;
+  --gd-grey-dark: #888888;
+
+  --dg-container-x: 7.2rem;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("/fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: var(--gd-white);
+  font-size: 1.8rem;
+  color: var(--gd-blue-dark);
+}
