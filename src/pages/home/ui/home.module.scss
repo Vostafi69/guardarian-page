@@ -10,6 +10,10 @@
   overflow: hidden;
   margin-bottom: var(--gd-container-y);
 
+  &:hover .background {
+    scale: 1.1;
+  }
+
   & .heroInner {
     @include container;
     padding: 0 var(--gd-container-x);
@@ -52,13 +56,20 @@
     }
   }
 
-  & .background {
+  & .backgroundContainer {
     top: 0;
     position: absolute;
-    object-fit: cover;
-    position: top right;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+  }
+
+  & .background {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    scale: 1;
+    transition: scale ease 1s;
   }
 
   & .paymentList {

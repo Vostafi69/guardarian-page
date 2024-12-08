@@ -7,11 +7,19 @@ import bg from "@/assets/images/bg.png";
 import styles from "./home.module.scss";
 import { RevealAnim } from "@/shared/ui/revealAnim";
 import { motion } from "motion/react";
+import { useParallaxHover } from "../model/useParallaxHover";
 
 export const Home: FC = () => {
+  const { handleMouseLeave, handleMouseMove, ref, values } = useParallaxHover();
+  const { springX, springY, stringRotate } = values;
+
   return (
     <main className={styles.main}>
-      <section className={styles.hero}>
+      <section
+        className={styles.hero}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         <div className={styles.heroInner}>
           <div className={styles.intro}>
             <RevealAnim>
@@ -37,12 +45,19 @@ export const Home: FC = () => {
           </div>
           <Calculator />
         </div>
-        <motion.img
-          onMouseMove={(e) => console.log(e)}
-          className={styles.background}
-          src={bg}
-          alt="Background image"
-        />
+        <div className={styles.backgroundContainer}>
+          <motion.img
+            ref={ref}
+            style={{
+              x: springX,
+              y: springY,
+              rotate: stringRotate,
+            }}
+            className={styles.background}
+            src={bg}
+            alt="Background image"
+          />
+        </div>
       </section>
       <section className={styles.benefits}>
         <RevealAnim>
