@@ -35,16 +35,6 @@
     }
   }
 
-  & .introTitle {
-    @include md-d {
-      font-size: 5.6rem;
-    }
-
-    @include sm-d {
-      font-size: 4rem;
-    }
-  }
-
   & .text {
     font-size: 2rem;
     line-height: 1.2;
@@ -86,11 +76,19 @@
   padding: var(--gd-container-y) var(--gd-container-x);
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: var(--gb-section-gap);
 
   & .benefitsButton {
     width: 36.2rem;
     margin: 0 auto;
+
+    @include md-d {
+      width: 100%;
+    }
+  }
+
+  @include lg-d {
+    overflow-x: hidden;
   }
 }
 
@@ -99,7 +97,7 @@
   padding: var(--gd-container-y) var(--gd-container-x);
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: var(--gb-section-gap);
 
   & .exchangeTitle {
     text-align: center;
@@ -115,7 +113,7 @@
     padding: var(--gd-container-y) var(--gd-container-x);
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: var(--gb-section-gap);
   }
 
   & .trustHeading {

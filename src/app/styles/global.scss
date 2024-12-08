@@ -15,17 +15,25 @@
   --gd-container-y: 8rem;
 
   --gd-container-w: 128rem;
+  --gb-section-gap: 4rem;
 
   @include lg-d {
     --gd-container-x: 4.6rem;
+    --gd-container-y: 6rem;
   }
 
   @include md-d {
     --gd-container-x: 3.8rem;
+    --gd-container-y: 5rem;
+
+    --gb-section-gap: 3.2rem;
   }
 
   @include sm-d {
-    --gd-container-x: 2.4rem;
+    --gd-container-y: 4rem;
+    --gd-container-x: 1.6rem;
+
+    --gb-section-gap: 2.4rem;
   }
 }
 

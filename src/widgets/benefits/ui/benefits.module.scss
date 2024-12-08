@@ -22,6 +22,10 @@
       line-height: 1.8rem;
       @include flex-center;
     }
+
+    @include md-d {
+      font-size: 1.6rem;
+    }
   }
 
   & .card {
@@ -29,6 +33,10 @@
     grid-template-columns: min-content 1fr;
     column-gap: 2.4rem;
     row-gap: 1.2rem;
+
+    @include md-d {
+      grid-template-columns: 1fr;
+    }
   }
 
   & .cardImgWrap {
@@ -39,5 +47,17 @@
     width: 7.6rem;
     height: 7.6rem;
     @include flex-center;
+  }
+
+  @include lg-d {
+    grid-template-columns: 1fr;
+  }
+
+  @include md-d {
+    gap: 3.8rem;
+  }
+
+  @include sm-d {
+    gap: 1.6rem;
   }
 }
