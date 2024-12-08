@@ -2,7 +2,7 @@ import { FC } from "react";
 import { PaymentsList } from "./paymentList";
 import { Button } from "@/shared/ui/button";
 import { Title } from "@/shared/ui/title";
-import { Benefits, ExchangeSteps, TrustSlider } from "@/widgets";
+import { Benefits, Calculator, ExchangeSteps, TrustSlider } from "@/widgets";
 import bg from "@/assets/images/bg.png";
 import styles from "./home.module.scss";
 import { RevealAnim } from "@/shared/ui/revealAnim";
@@ -34,7 +34,7 @@ export const Home: FC = () => {
               <PaymentsList />
             </RevealAnim>
           </div>
-          <div className={styles.widget}></div>
+          <Calculator />
         </div>
         <img className={styles.background} src={bg} alt="Background image" />
       </section>
