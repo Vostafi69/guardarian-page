@@ -66,4 +66,8 @@
       transform: scaleX(1);
     }
   }
+
+  @include md-d {
+    height: 6.8rem;
+  }
 }
