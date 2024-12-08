@@ -14,13 +14,22 @@ export const TrustSlider: FC = () => {
     <div className={styles.swiper}>
       <SliderButton swiperInstance={ref} direction="prev" />
       <Swiper
+        className={styles.trustSwiper}
         modules={[Navigation]}
-        style={{ width: "100%" }}
         spaceBetween={16}
-        slidesPerView={6}
+        slidesPerView="auto"
+        freeMode
         loop
         onSwiper={(swiper) => {
           ref.current.instance = swiper;
+        }}
+        breakpoints={{
+          1199.8: {
+            slidesPerView: 6,
+          },
+          767.8: {
+            slidesPerView: 4,
+          },
         }}
       >
         {TRUSTING.map(({ alt, src }, index) => (

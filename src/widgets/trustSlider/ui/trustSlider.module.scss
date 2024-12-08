@@ -4,16 +4,40 @@
   gap: 1.6rem;
   align-items: center;
 
+  .trustSwiper {
+    width: 100%;
+
+    @include md-d {
+      overflow: visible;
+    }
+  }
+
   .swiperSlide {
     background-color: var(--gd-white);
     border-radius: 1.6rem;
     height: 16rem;
     @include flex-center;
     padding: 2rem;
+
+    @include md-d {
+      width: 15rem;
+    }
+
+    @include lg-d {
+      height: 12.4rem;
+    }
+  }
+
+  @include md-d {
+    gap: 0;
   }
 }
 
 .swiperButton {
   width: 3.2rem;
   height: 3.2rem;
+
+  @include md-d {
+    display: none;
+  }
 }

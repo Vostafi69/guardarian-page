@@ -125,5 +125,13 @@
   & .trustButton {
     width: 27.2rem;
     margin: 0 auto;
+
+    @include md-d {
+      width: 100%;
+    }
+  }
+
+  @include md-d {
+    overflow-x: hidden;
   }
 }
