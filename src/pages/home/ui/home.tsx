@@ -6,10 +6,11 @@ import { Benefits, Calculator, ExchangeSteps, TrustSlider } from "@/widgets";
 import bg from "@/assets/images/bg.png";
 import styles from "./home.module.scss";
 import { RevealAnim } from "@/shared/ui/revealAnim";
+import { motion } from "motion/react";
 
 export const Home: FC = () => {
   return (
-    <main>
+    <main className={styles.main}>
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <div className={styles.intro}>
@@ -36,7 +37,12 @@ export const Home: FC = () => {
           </div>
           <Calculator />
         </div>
-        <img className={styles.background} src={bg} alt="Background image" />
+        <motion.img
+          onMouseMove={(e) => console.log(e)}
+          className={styles.background}
+          src={bg}
+          alt="Background image"
+        />
       </section>
       <section className={styles.benefits}>
         <RevealAnim>

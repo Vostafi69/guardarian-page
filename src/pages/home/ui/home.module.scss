@@ -1,3 +1,9 @@
+.main {
+  width: 100vw;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 .hero {
   position: relative;
   height: 61.2rem;
@@ -86,10 +92,6 @@
       width: 100%;
     }
   }
-
-  @include lg-d {
-    overflow-x: hidden;
-  }
 }
 
 .exchange {
@@ -101,10 +103,6 @@
 
   & .exchangeTitle {
     text-align: center;
-  }
-
-  @include md-d {
-    overflow: hidden;
   }
 }
 
@@ -137,9 +135,5 @@
     @include md-d {
       width: 100%;
     }
-  }
-
-  @include md-d {
-    overflow-x: hidden;
   }
 }
