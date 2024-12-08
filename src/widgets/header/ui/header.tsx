@@ -3,8 +3,8 @@ import { Logo } from "@/shared/ui/logo";
 import { Button } from "@/shared/ui/button";
 import { Nav } from "./nav";
 import { motion } from "motion/react";
-import styles from "./header.module.scss";
 import { useHeaderAnim } from "../model/useHeaderAnim";
+import styles from "./header.module.scss";
 
 export const Header: FC = () => {
   const { isHidden } = useHeaderAnim();

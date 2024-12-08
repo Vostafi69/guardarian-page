@@ -15,6 +15,18 @@
   --gd-container-y: 8rem;
 
   --gd-container-w: 128rem;
+
+  @include lg-d {
+    --gd-container-x: 4.6rem;
+  }
+
+  @include md-d {
+    --gd-container-x: 3.8rem;
+  }
+
+  @include sm-d {
+    --gd-container-x: 2.4rem;
+  }
 }
 
 @font-face {

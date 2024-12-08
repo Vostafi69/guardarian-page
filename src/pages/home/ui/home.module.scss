@@ -13,6 +13,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 2.6rem;
+
+    @include md-d {
+      margin-top: 4rem;
+    }
+
+    @include lg-d {
+      flex-direction: column;
+    }
   }
 
   & .intro {
@@ -20,12 +29,31 @@
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
+
+    @include md-d {
+      gap: 1.6rem;
+    }
+  }
+
+  & .introTitle {
+    @include md-d {
+      font-size: 5.6rem;
+    }
+
+    @include sm-d {
+      font-size: 4rem;
+    }
   }
 
   & .text {
     font-size: 2rem;
     line-height: 1.2;
     max-width: 45.5rem;
+
+    @include md-d {
+      font-size: 1.8rem;
+      margin-bottom: 0.4rem;
+    }
   }
 
   & .background {
@@ -42,6 +70,10 @@
     flex-direction: row;
     align-items: center;
     gap: 2.4rem;
+
+    @include md-d {
+      gap: 1.6rem;
+    }
   }
 }
 

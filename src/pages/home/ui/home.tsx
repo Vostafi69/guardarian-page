@@ -14,7 +14,7 @@ export const Home: FC = () => {
         <div className={styles.heroInner}>
           <div className={styles.intro}>
             <RevealAnim>
-              <Title titleType="h1">
+              <Title className={styles.introTitle} titleType="h1">
                 {"Crypto<>Fiat"}
                 <br />
                 <span className={styles.blue}>
