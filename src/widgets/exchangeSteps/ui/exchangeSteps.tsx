@@ -1,13 +1,23 @@
 import { FC } from "react";
 import { STEPS } from "../config";
-import { ExchangeStep } from "./exchangeStep";
+import { MotionExchangeStep } from "./exchangeStep";
 import styles from "./exchangeSteps.module.scss";
+import { useExchangeStepsAnim } from "../model/useExchangeStepsAnim";
 
 export const ExchangeSteps: FC = () => {
+  const { ref, rotates, translateY } = useExchangeStepsAnim();
+
   return (
-    <div className={styles.exchangeSteps}>
+    <div className={styles.exchangeSteps} ref={ref}>
       {STEPS.map((step, index) => (
-        <ExchangeStep key={index} step={step} />
+        <MotionExchangeStep
+          key={index}
+          step={step}
+          style={{
+            rotate: rotates[index],
+            translateY: translateY,
+          }}
+        />
       ))}
     </div>
   );
