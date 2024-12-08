@@ -23,6 +23,11 @@
     align-items: center;
     gap: 2rem;
     margin-right: auto;
+
+    @include md-d {
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   & .footerSocials {
@@ -31,11 +36,21 @@
     flex-direction: row;
     align-items: center;
     gap: 4.8rem;
+
+    @include md-d {
+      flex-direction: column;
+      gap: 2.4rem;
+    }
   }
 
   & .footerDivider {
     margin-top: 3.2rem;
     margin-bottom: 0.8rem;
+
+    @include md-d {
+      margin-top: 2.4rem;
+      margin-bottom: 1.6rem;
+    }
   }
 
   & .footerInfo {
@@ -43,6 +58,10 @@
     flex-direction: column;
     gap: 1.4rem;
     margin-top: 4.8rem;
+
+    @include md-d {
+      margin-top: 4rem;
+    }
   }
 }
 
@@ -63,9 +82,10 @@
 }
 
 .navLinks {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 2rem;
+  column-gap: 2.4rem;
 
   & .navLinksList {
     display: flex;
@@ -80,5 +100,13 @@
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  @include lg-d {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include sm-d {
+    grid-template-columns: 1fr 1fr;
   }
 }
