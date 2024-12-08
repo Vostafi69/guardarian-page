@@ -27,7 +27,7 @@ export const Footer: FC = () => {
         </div>
         <div className={styles.footerInfo}>
           <p className={styles.footerRights}>
-            © 2023, Guardarian. All rights reserved.
+            © 2024, Guardarian. All rights reserved.
           </p>
           <p className={styles.footerAbout}>
             Guardarian OÜ is a company registered in Estonia, registry code:

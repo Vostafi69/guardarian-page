@@ -55,7 +55,9 @@ export const Home: FC = () => {
           </Title>
         </RevealAnim>
         <ExchangeSteps />
-        <Button isFluid>Start making exchanges</Button>
+        <Button size="big" isFluid>
+          Start making exchanges
+        </Button>
       </section>
       <section className={styles.trust}>
         <div className={styles.trustInner}>
