@@ -2,13 +2,13 @@
   height: 8.5rem;
   width: 100%;
   background-color: var(--gd-white);
-  padding: 0 var(--gd-container-x);
   position: sticky;
   top: 0;
   z-index: 6;
 
   & .headerInner {
     @include container;
+    padding: 0 var(--gd-container-x);
     height: 100%;
     display: flex;
     flex-direction: row;
