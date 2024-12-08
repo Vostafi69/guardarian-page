@@ -47,4 +47,23 @@
   & .button {
     width: 15.2rem;
   }
+
+  & .mavItem {
+    position: relative;
+
+    &::before {
+      content: "";
+      height: 2px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      background-color: var(--gd-blue);
+      transition: transform ease 0.3s;
+      transform: scaleX(0);
+    }
+
+    &:hover::before {
+      transform: scaleX(1);
+    }
+  }
 }

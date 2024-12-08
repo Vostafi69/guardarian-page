@@ -1,13 +1,7 @@
 import { FC } from "react";
-import styles from "./header.module.scss";
 import { NavItem } from "./navItem";
-
-const NAV_LIST: { name: string; link: string }[] = [
-  { link: "#", name: "Currencies" },
-  { link: "#", name: "Products" },
-  { link: "#", name: "For Partners" },
-  { link: "#", name: "Support" },
-];
+import { NAV_LIST } from "../config";
+import styles from "./header.module.scss";
 
 export const Nav: FC = () => {
   return (

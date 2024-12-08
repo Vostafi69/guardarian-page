@@ -15,7 +15,7 @@ export const RevealAnim: FC<RevealAnimProps> = ({ children, delay = 0 }) => {
       transition={{ duration: 0.5, ease: "circOut", delay }}
       variants={{
         visible: { translateY: 0, opacity: 1 },
-        hidden: { translateY: 40, opacity: 0 },
+        hidden: { translateY: 80, opacity: 0 },
       }}
     >
       {children}
