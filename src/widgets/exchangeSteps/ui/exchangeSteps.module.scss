@@ -1,11 +1,8 @@
 .exchangeSteps {
-  display: flex;
-  flex-direction: row;
-  gap: 2.4rem;
-
   & .card {
     display: flex;
     flex-direction: column;
+    height: 100%;
     padding: 2.4rem;
     padding-bottom: 0;
     border: none;
@@ -24,9 +21,58 @@
     margin-top: 1.6rem;
     margin-bottom: 4rem;
     text-align: center;
+
+    @include md-d {
+      margin-bottom: 2.4rem;
+    }
   }
 
   & .cardFooter {
     margin-top: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  & .stepsSlider {
+    width: 100%;
+
+    & :global(.swiper-pagination-bullets) {
+      position: initial;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 0;
+      gap: 1.6rem;
+      bottom: -2.4rem;
+      height: 0.8rem;
+      width: 100%;
+      display: none;
+
+      @include md-d {
+        margin-top: 1.6rem;
+        display: flex;
+      }
+    }
+
+    @include md-d {
+      overflow: visible;
+    }
+  }
+
+  & .bullet {
+    display: block;
+    background-color: var(--gd-blue-soft);
+    height: 0.8rem;
+    width: 4.1rem;
+    border-radius: 0.8rem;
+    transition: background ease 0.3s;
+  }
+
+  & .bulletActive {
+    background-color: var(--gd-blue-light);
+  }
+
+  & .slide {
+    height: auto;
   }
 }

@@ -102,6 +102,10 @@
   & .exchangeTitle {
     text-align: center;
   }
+
+  @include md-d {
+    overflow: hidden;
+  }
 }
 
 .trust {
