@@ -1,0 +1,19 @@
+.swiper {
+  display: flex;
+  flex-direction: row;
+  gap: 1.6rem;
+  align-items: center;
+
+  .swiperSlide {
+    background-color: var(--gd-white);
+    border-radius: 1.6rem;
+    height: 16rem;
+    @include flex-center;
+    padding: 2rem;
+  }
+}
+
+.swiperButton {
+  width: 3.2rem;
+  height: 3.2rem;
+}
