@@ -43,7 +43,11 @@ export const Home: FC = () => {
               <PaymentsList />
             </RevealAnim>
           </div>
-          <Calculator />
+          <div className={styles.calculatorContainer}>
+            <RevealAnim delay={0.8}>
+              <Calculator />
+            </RevealAnim>
+          </div>
         </div>
         <div className={styles.backgroundContainer}>
           <motion.img
