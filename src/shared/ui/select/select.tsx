@@ -152,6 +152,12 @@ const SelectOption: FC<SelectOptionProps> = ({
   );
 };
 
+SelectRoot.displayName = "SelectRoot";
+SelectOption.displayName = "SelectOption";
+SelectOptionsList.displayName = "SelectOptionsList";
+SelectTrigger.displayName = "SelectTrigger";
+SelectViewPort.displayName = "SelectViewPort";
+
 export {
   SelectRoot as Root,
   SelectOption as Option,
