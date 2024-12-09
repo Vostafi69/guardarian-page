@@ -15,7 +15,7 @@ const BenefitCard = forwardRef<HTMLDivElement, BenefitCardProps>(
 
     return (
       <Card.Root ref={ref}>
-        <Card.CardBody className={styles.card}>
+        <Card.Body className={styles.card}>
           <div className={styles.cardImgWrap}>
             <img className={styles.cardImg} src={img.src} alt={img.alt} />
           </div>
@@ -29,7 +29,7 @@ const BenefitCard = forwardRef<HTMLDivElement, BenefitCardProps>(
               </li>
             ))}
           </ul>
-        </Card.CardBody>
+        </Card.Body>
       </Card.Root>
     );
   },

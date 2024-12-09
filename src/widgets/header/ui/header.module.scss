@@ -58,7 +58,7 @@
       position: absolute;
       bottom: 0;
       background-color: var(--gd-blue);
-      transition: transform ease 0.3s;
+      transition: transform var(--transition-function) 0.3s;
       transform: scaleX(0);
     }
 

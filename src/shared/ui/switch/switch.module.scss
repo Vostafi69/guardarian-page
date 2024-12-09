@@ -1,0 +1,31 @@
+.switchRoot {
+  --translateX: 0;
+  --switch-width: 3.9rem;
+  --switch-height: 1.9rem;
+  --switch-padding: 0.3rem;
+  --thumb-size: 1.3rem;
+
+  width: var(--switch-width);
+  height: var(--switch-height);
+  border-radius: 3rem;
+  background-color: var(--gb-grey-soft);
+  padding: var(--switch-padding);
+  transition: background-color var(--transition-function) 0.3s;
+
+  &.checked {
+    --translateX: calc(
+      var(--switch-width) - var(--thumb-size) - var(--switch-padding) * 2
+    );
+    background-color: var(--gd-blue-light);
+  }
+}
+
+.switchThumb {
+  display: block;
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  border-radius: 10rem;
+  background-color: var(--gd-white);
+  transform: translateX(var(--translateX));
+  transition: transform var(--transition-function) 0.3s;
+}

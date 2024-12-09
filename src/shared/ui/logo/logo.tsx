@@ -18,3 +18,5 @@ export const Logo = forwardRef<HTMLAnchorElement, LogoProps>(
     );
   },
 );
+
+Logo.displayName = "Logo";

@@ -14,3 +14,5 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
     return <div className={variants} ref={ref} {...rest} />;
   },
 );
+
+Divider.displayName = "Divider";

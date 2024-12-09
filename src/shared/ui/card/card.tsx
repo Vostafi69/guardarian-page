@@ -2,13 +2,15 @@ import { forwardRef, HTMLAttributes } from "react";
 import cn from "classnames";
 import styles from "./card.module.scss";
 
-const Root = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
+const CardRoot = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...rest }, ref) => {
     const variants = cn(styles.root, className);
 
     return <div className={variants} ref={ref} {...rest}></div>;
   },
 );
+
+CardRoot.displayName = "CardRoot";
 
 const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...rest }, ref) => {
@@ -22,6 +24,8 @@ const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   },
 );
 
+CardHeader.displayName = "CardHeader";
+
 const CardBody = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...rest }, ref) => {
     const variants = cn(styles.body, className);
@@ -33,6 +37,8 @@ const CardBody = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
     );
   },
 );
+
+CardBody.displayName = "CardBody";
 
 const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, children, ...rest }, ref) => {
@@ -46,4 +52,11 @@ const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   },
 );
 
-export { Root, CardHeader, CardBody, CardFooter };
+CardFooter.displayName = "CardFooter";
+
+export {
+  CardRoot as Root,
+  CardHeader as Header,
+  CardBody as Body,
+  CardFooter as Footer,
+};

@@ -10,12 +10,15 @@
   --gd-grey-dark: #888888;
   --gd-blue-soft: #e3f2ff;
   --gb-grey-hard: #808080;
+  --gb-grey-soft: #d9d9d9;
 
   --gd-container-x: 7.2rem;
   --gd-container-y: 8rem;
 
   --gd-container-w: 128rem;
   --gb-section-gap: 4rem;
+
+  --transition-function: cubic-bezier(0.4, 0, 0.2, 1);
 
   @include lg-d {
     --gd-container-x: 4.6rem;

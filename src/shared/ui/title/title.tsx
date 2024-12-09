@@ -27,3 +27,5 @@ export const Title = forwardRef<HTMLHeadingElement, TitleProps>(
     );
   },
 );
+
+Title.displayName = "Title";
