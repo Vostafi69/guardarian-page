@@ -6,6 +6,7 @@ import { Select } from "@/shared/ui/select";
 import { getCurrenciesMock } from "@/entities";
 import cn from "classnames";
 import styles from "./calculator.module.scss";
+import { Input } from "@/shared/ui/input";
 
 interface CalculatorProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -43,6 +44,7 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
               </Select.OptionsList>
             </Select.ViewPort>
           </Select.Root>
+          <Input />
           <Button isFluid>Become a partner</Button>
         </Card.Body>
       </Card.Root>
