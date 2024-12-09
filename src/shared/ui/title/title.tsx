@@ -11,6 +11,7 @@ export const Title = forwardRef<HTMLHeadingElement, TitleProps>(
     const Slot = titleType;
 
     const variants = cn(
+      styles.base,
       {
         [styles.h1]: titleType === "h1",
         [styles.h2]: titleType === "h2",

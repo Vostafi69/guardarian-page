@@ -33,6 +33,7 @@
     grid-template-columns: min-content 1fr;
     column-gap: 2.4rem;
     row-gap: 1.2rem;
+    cursor: default;
 
     @include md-d {
       grid-template-columns: 1fr;

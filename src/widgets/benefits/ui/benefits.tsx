@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { BENEFITS } from "../config";
 import { MotionBenefitCard } from "./benefitCard";
-import { useBenefitsAnimation } from "../model/useBenefitsAnim";
+import { useBenefitsAnimation } from "./useBenefitsAnim";
 import styles from "./benefits.module.scss";
 
 export const Benefits: FC = () => {

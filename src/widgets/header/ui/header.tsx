@@ -3,7 +3,7 @@ import { Logo } from "@/shared/ui/logo";
 import { Button } from "@/shared/ui/button";
 import { Nav } from "./nav";
 import { motion } from "motion/react";
-import { useHeaderAnim } from "../model/useHeaderAnim";
+import { useHeaderAnim } from "./useHeaderAnim";
 import styles from "./header.module.scss";
 
 export const Header: FC = () => {

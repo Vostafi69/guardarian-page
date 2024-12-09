@@ -7,7 +7,7 @@ import bg from "@/assets/images/bg.png";
 import styles from "./home.module.scss";
 import { RevealAnim } from "@/shared/ui/revealAnim";
 import { motion } from "motion/react";
-import { useParallaxHover } from "../model/useParallaxHover";
+import { useParallaxHover } from "./useParallaxHover";
 
 export const Home: FC = () => {
   const { handleMouseLeave, handleMouseMove, ref, values } = useParallaxHover();

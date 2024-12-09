@@ -1,7 +1,7 @@
 import { FC, useRef } from "react";
 import { STEPS } from "../config";
 import { MotionExchangeStep } from "./exchangeStep";
-import { useExchangeStepsAnim } from "../model/useExchangeStepsAnim";
+import { useExchangeStepsAnim } from "./useExchangeStepsAnim";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import styles from "./exchangeSteps.module.scss";
