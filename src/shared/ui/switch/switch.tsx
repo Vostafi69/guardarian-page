@@ -6,10 +6,11 @@ interface SwitchRootProps {
   className?: string;
   checked?: boolean;
   children: ReactNode;
+  onChange?: (checked: boolean) => void;
 }
 
 const SwitchRoot = forwardRef<HTMLButtonElement, SwitchRootProps>(
-  ({ className, children, checked = false }, ref) => {
+  ({ className, children, checked = false, onChange }, ref) => {
     const [isChecked, setIsChecked] = useState<boolean>(checked);
 
     const variants = cn(
@@ -20,12 +21,19 @@ const SwitchRoot = forwardRef<HTMLButtonElement, SwitchRootProps>(
       className,
     );
 
+    const handleClick = () => {
+      setIsChecked((prev) => !prev);
+      if (onChange) {
+        onChange(!isChecked);
+      }
+    };
+
     return (
       <button
         className={variants}
         type="button"
         aria-checked={isChecked}
-        onClick={() => setIsChecked((prev) => !prev)}
+        onClick={handleClick}
         role="switch"
         ref={ref}
       >

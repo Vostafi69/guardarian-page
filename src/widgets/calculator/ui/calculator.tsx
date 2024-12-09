@@ -1,25 +1,48 @@
-import { forwardRef } from "react";
-import styles from "./calculator.module.scss";
+import { forwardRef, HTMLAttributes } from "react";
 import { Card } from "@/shared/ui/card";
 import { Button } from "@/shared/ui/button";
 import { Switch } from "@/shared/ui/switch";
+import { Select } from "@/shared/ui/select";
+import { getCurrenciesMock } from "@/entities";
+import cn from "classnames";
+import styles from "./calculator.module.scss";
 
-interface CalculatorProps {
-  test?: string;
-}
+interface CalculatorProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
-  ({ test }, ref) => {
-    if (test) {
-      console.log(test);
-    }
+  ({ className, ...rest }, ref) => {
+    const { data } = getCurrenciesMock();
+
+    const variants = cn(styles.calculator, className);
 
     return (
-      <Card.Root ref={ref} className={styles.calculator}>
+      <Card.Root className={variants} ref={ref} {...rest}>
         <Card.Body>
           <Switch.Root>
             <Switch.Thumb />
           </Switch.Root>
+          <Select.Root>
+            <Select.Trigger className={styles.calculatorTrigger}>
+              Выбрать
+            </Select.Trigger>
+            <Select.ViewPort>
+              <Select.OptionsList>
+                {data.map(({ img, name, ticker }, index) => (
+                  <Select.Option value={ticker} key={index}>
+                    <div className={styles.currency}>
+                      <img
+                        className={styles.currencyImg}
+                        src={img.src}
+                        alt={img.alt}
+                      />
+                      <span className={styles.currencyTicker}>{ticker}</span>
+                      <p className={styles.currencyName}>{name}</p>
+                    </div>
+                  </Select.Option>
+                ))}
+              </Select.OptionsList>
+            </Select.ViewPort>
+          </Select.Root>
           <Button isFluid>Become a partner</Button>
         </Card.Body>
       </Card.Root>

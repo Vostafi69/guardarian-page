@@ -64,6 +64,8 @@
 html {
   font-size: 62.5%;
   font-family: "Roboto", sans-serif;
+  scrollbar-color: var(--gd-blue-light) var(--gd-white);
+  scrollbar-width: thin;
 }
 
 body {

@@ -1,0 +1,90 @@
+.selectRoot {
+  --select-option-color: var(--gd-grey-dark);
+  --select-option-hover-color: var(--gd-grey-light);
+  --select-border-color: var(--gd-grey);
+  --select-viewport-bg: var(--gd-white);
+  --select-trigger-color: var(--gd-blue-dark);
+
+  position: relative;
+}
+
+.selectViewPort {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 3.5rem;
+  left: 0;
+  right: 0;
+  background-color: var(--select-viewport-bg);
+  border-radius: 0.8rem;
+  border: 1px solid var(--select-border-color);
+  z-index: 20;
+  transform: translateY(-1rem);
+  overflow: hidden;
+
+  transition:
+    opacity var(--transition-function) 0.3s,
+    transform var(--transition-function) 0.3s;
+}
+
+.selectOptionsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.selectOption {
+  padding: 0.8rem 3rem 0.8rem 2rem;
+  transition: background-color var(--transition-function) 0.3s;
+  color: var(--select-option-color);
+  font-size: 1.4rem;
+  cursor: default;
+
+  &:hover {
+    background-color: var(--select-option-hover-color);
+  }
+}
+
+.selectOPtionSelected {
+  background-color: var(--gd-blue-soft);
+
+  &:hover {
+    background-color: var(--gd-blue-soft);
+  }
+}
+
+.selectTrigger {
+  font-size: 2.4rem;
+  color: var(--select-trigger-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+
+  & .selectTriggerContent {
+    width: 10rem;
+  }
+
+  .selectTriggerIcon {
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--gd-blue-soft);
+    border-radius: 10rem;
+    @include flex-center;
+    transition: transform var(--transition-function) 0.3s;
+  }
+
+  & .open {
+    transform: rotate(180deg);
+  }
+
+  & .selectTriggerIconImg {
+    width: 1.2rem;
+    height: 0.7rem;
+  }
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
