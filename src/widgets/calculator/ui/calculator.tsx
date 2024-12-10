@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes } from "react";
+import { forwardRef, HTMLAttributes, useCallback } from "react";
 import { Card } from "@/shared/ui/card";
 import { Button } from "@/shared/ui/button";
 import { Switch } from "@/shared/ui/switch";
@@ -17,13 +17,21 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
 
     const variants = cn(styles.calculator, className);
 
+    const handleLennisScroll = useCallback((isOpen: boolean) => {
+      if (isOpen) {
+        document.body.setAttribute("data-lenis-prevent", "");
+      } else {
+        document.body.removeAttribute("data-lenis-prevent");
+      }
+    }, []);
+
     return (
       <Card.Root className={variants} ref={ref} {...rest}>
         <Card.Body>
           <Switch.Root>
             <Switch.Thumb />
           </Switch.Root>
-          <Select.Root>
+          <Select.Root onIsOpen={handleLennisScroll}>
             <Select.Trigger className={styles.calculatorTrigger}>
               Выбрать
             </Select.Trigger>

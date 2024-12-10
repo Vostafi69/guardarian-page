@@ -10,9 +10,12 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
+  useRef,
   useState,
 } from "react";
 import arrow from "@/assets/images/arrow-b.svg";
+import { useClickOutside } from "@/shared/hooks/useClickOutside";
 
 interface SelectContextType {
   selected: ReactNode | null;
@@ -32,11 +35,32 @@ const useSelectContext = () => {
   return context;
 };
 
-interface SelectRootProps extends HTMLAttributes<HTMLDivElement> {}
+interface SelectRootProps extends HTMLAttributes<HTMLDivElement> {
+  onIsOpen?: (isOpen: boolean) => void;
+}
 
-const SelectRoot: FC<SelectRootProps> = ({ className, children, ...rest }) => {
+const SelectRoot: FC<SelectRootProps> = ({
+  className,
+  children,
+  onIsOpen,
+  ...rest
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<ReactNode | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+  useClickOutside<HTMLDivElement>(rootRef, () => setIsOpen(false));
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+
+    if (onIsOpen) {
+      onIsOpen(isOpen);
+    }
+  }, [isOpen, onIsOpen]);
 
   const variants = cn(styles.selectRoot, className);
 
@@ -44,7 +68,7 @@ const SelectRoot: FC<SelectRootProps> = ({ className, children, ...rest }) => {
     <SelectContext.Provider
       value={{ isOpen, selected, setIsOpen, setSelected }}
     >
-      <div className={variants} {...rest}>
+      <div className={variants} ref={rootRef} {...rest}>
         {children}
       </div>
     </SelectContext.Provider>
