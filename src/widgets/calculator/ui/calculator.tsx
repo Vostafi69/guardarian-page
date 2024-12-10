@@ -4,10 +4,10 @@ import { Button } from "@/shared/ui/button";
 import { Switch } from "@/shared/ui/switch";
 import { Select } from "@/shared/ui/select";
 import { getCurrenciesMock } from "@/entities";
-import cn from "classnames";
-import styles from "./calculator.module.scss";
 import { Input } from "@/shared/ui/input";
 import { Label } from "@/shared/ui/label";
+import cn from "classnames";
+import styles from "./calculator.module.scss";
 
 interface CalculatorProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -31,10 +31,8 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
           <Switch.Root>
             <Switch.Thumb />
           </Switch.Root>
-          <Select.Root onIsOpen={handleLennisScroll}>
-            <Select.Trigger className={styles.calculatorTrigger}>
-              Выбрать
-            </Select.Trigger>
+          <Select.Root defaultValue="USD" onIsOpen={handleLennisScroll}>
+            <Select.Trigger className={styles.calculatorTrigger} />
             <Select.ViewPort>
               <Select.OptionsList>
                 {data.map(({ img, name, ticker }, index) => (

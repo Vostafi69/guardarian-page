@@ -20,6 +20,8 @@ import { useClickOutside } from "@/shared/hooks/useClickOutside";
 interface SelectContextType {
   selected: ReactNode | null;
   isOpen: boolean;
+  currentValue: string | undefined;
+  setCurrentValue: Dispatch<SetStateAction<string | undefined>>;
   setSelected: Dispatch<SetStateAction<ReactNode | null>>;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   onChange?: (value: ReactNode) => void;
@@ -37,16 +39,23 @@ const useSelectContext = () => {
 
 interface SelectRootProps extends HTMLAttributes<HTMLDivElement> {
   onIsOpen?: (isOpen: boolean) => void;
+  onValueChange?: (value: ReactNode) => void;
+  defaultValue?: string;
 }
 
 const SelectRoot: FC<SelectRootProps> = ({
   className,
   children,
   onIsOpen,
+  onValueChange,
+  defaultValue,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selected, setSelected] = useState<ReactNode | null>(null);
+  const [currentValue, setCurrentValue] = useState<string | undefined>(
+    defaultValue,
+  );
   const rootRef = useRef<HTMLDivElement>(null);
   useClickOutside<HTMLDivElement>(rootRef, () => setIsOpen(false));
 
@@ -60,13 +69,24 @@ const SelectRoot: FC<SelectRootProps> = ({
     if (onIsOpen) {
       onIsOpen(isOpen);
     }
+
+    if (onValueChange) {
+      onValueChange(selected);
+    }
   }, [isOpen, onIsOpen]);
 
   const variants = cn(styles.selectRoot, className);
 
   return (
     <SelectContext.Provider
-      value={{ isOpen, selected, setIsOpen, setSelected }}
+      value={{
+        isOpen,
+        selected,
+        setIsOpen,
+        setSelected,
+        currentValue,
+        setCurrentValue,
+      }}
     >
       <div className={variants} ref={rootRef} {...rest}>
         {children}
@@ -151,12 +171,23 @@ const SelectOption: FC<SelectOptionProps> = ({
   value,
   children,
 }) => {
-  const { setSelected, setIsOpen, onChange, selected } = useSelectContext();
+  const {
+    setSelected,
+    selected,
+    setCurrentValue,
+    setIsOpen,
+    onChange,
+    currentValue,
+  } = useSelectContext();
+
+  if (selected !== children && currentValue === value) {
+    setSelected(children);
+  }
 
   const variants = cn(
     styles.selectOption,
     {
-      [styles.selectOPtionSelected]: selected === value,
+      [styles.selectOPtionSelected]: currentValue === value,
     },
     className,
   );
@@ -165,6 +196,7 @@ const SelectOption: FC<SelectOptionProps> = ({
     if (onChange) {
       onChange(value);
     }
+    setCurrentValue(value);
     setSelected(children);
     setIsOpen(false);
   };
