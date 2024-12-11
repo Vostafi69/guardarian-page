@@ -2,6 +2,8 @@ import { forwardRef, HTMLAttributes, useState } from "react";
 import { Card } from "@/shared/ui/card";
 import { CurrencyForm } from "@/features";
 import { CurrencyActionsType } from "@/entities/currency/model/types";
+import { motion } from "motion/react";
+import { Tabs } from "../config/calculatorTabs";
 import cn from "classnames";
 import styles from "./calculator.module.scss";
 
@@ -17,33 +19,21 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
       <Card.Root className={variants} ref={ref} {...rest}>
         <Card.Body>
           <div className={styles.tabs}>
-            <button
-              onClick={() => setActiveTab("BUY")}
-              className={cn(
-                { [styles.active]: activeTab === "BUY" },
-                styles.tab,
-              )}
-            >
-              Buy
-            </button>
-            <button
-              onClick={() => setActiveTab("SELL")}
-              className={cn(
-                { [styles.active]: activeTab === "SELL" },
-                styles.tab,
-              )}
-            >
-              Sell
-            </button>
-            <button
-              onClick={() => setActiveTab("SWAP")}
-              className={cn(
-                { [styles.active]: activeTab === "SWAP" },
-                styles.tab,
-              )}
-            >
-              Swap
-            </button>
+            {Tabs.map(({ label, value }, index) => (
+              <button
+                className={styles.tab}
+                key={index}
+                onClick={() => setActiveTab(value)}
+              >
+                {label}
+                {activeTab === value && (
+                  <motion.div
+                    className={styles.underline}
+                    layoutId="underline"
+                  />
+                )}
+              </button>
+            ))}
           </div>
           <div className={styles.formContainer}>
             <CurrencyForm formEvent={activeTab} />

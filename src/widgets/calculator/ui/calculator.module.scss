@@ -20,19 +20,16 @@
   & .tab {
     font-size: 2.4rem;
     color: var(--gd-blue-dark);
+    position: relative;
   }
 
-  & .active {
-    position: relative;
-
-    &::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 0.2rem;
-      bottom: 0;
-      background-color: var(--gd-blue-light);
-      border-radius: 0.4rem;
-    }
+  & .underline {
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    right: 0;
+    height: 0.2rem;
+    background-color: var(--gd-blue-light);
+    border-radius: 0.4rem;
   }
 }
