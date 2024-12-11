@@ -18,11 +18,11 @@ import {
   getCurrenciesMock,
 } from "@/entities";
 import { inputDigitsOnly } from "@/shared/helpers/inputDigitsOnly";
-import { CurrencyActionsType } from "@/entities/currency/model/types";
+import { CurrencyActionsType } from "@/entities";
 import { AnimatePresence, motion } from "motion/react";
+import { motionConfig } from "@/shared/libs/motionConfig";
 import cn from "classnames";
 import styles from "./currencyForm.module.scss";
-import { motionConfig } from "@/shared/libs/motionConfig";
 
 interface BuyFormProps {
   className?: string;

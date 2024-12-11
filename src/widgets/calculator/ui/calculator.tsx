@@ -1,7 +1,7 @@
 import { forwardRef, HTMLAttributes, useState } from "react";
 import { Card } from "@/shared/ui/card";
 import { CurrencyForm } from "@/features";
-import { CurrencyActionsType } from "@/entities/currency/model/types";
+import { CurrencyActionsType } from "@/entities";
 import { motion } from "motion/react";
 import { Tabs } from "../config/calculatorTabs";
 import cn from "classnames";
