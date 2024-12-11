@@ -14,7 +14,6 @@ import {
   useRef,
   useState,
   MouseEvent,
-  memo,
 } from "react";
 import arrow from "@/assets/images/arrow-b.svg";
 import { useClickOutside } from "@/shared/hooks/useClickOutside";
@@ -45,60 +44,57 @@ interface SelectRootProps extends HTMLAttributes<HTMLDivElement> {
   defaultValue?: string;
 }
 
-const SelectRoot = memo(
-  ({
-    className,
-    children,
-    onIsOpen,
-    onValueChange,
+const SelectRoot: FC<SelectRootProps> = ({
+  className,
+  children,
+  onIsOpen,
+  onValueChange,
+  defaultValue,
+  ...rest
+}) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selected, setSelected] = useState<ReactNode | null>(null);
+  const [currentValue, setCurrentValue] = useState<string | undefined>(
     defaultValue,
-    ...rest
-  }: SelectRootProps) => {
-    const [isOpen, setIsOpen] = useState<boolean>(false);
-    const [selected, setSelected] = useState<ReactNode | null>(null);
-    const [currentValue, setCurrentValue] = useState<string | undefined>(
-      defaultValue,
-    );
-    const rootRef = useRef<HTMLDivElement>(null);
-    useClickOutside<HTMLDivElement>(rootRef, () => setIsOpen(false));
+  );
+  const rootRef = useRef<HTMLDivElement>(null);
+  useClickOutside<HTMLDivElement>(rootRef, () => setIsOpen(false));
 
-    useEffect(() => {
-      if (isOpen) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "visible";
-      }
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
 
-      if (onIsOpen) {
-        onIsOpen(isOpen);
-      }
+    if (onIsOpen) {
+      onIsOpen(isOpen);
+    }
 
-      if (onValueChange) {
-        onValueChange(currentValue || "");
-      }
-    }, [isOpen, onIsOpen, onValueChange, currentValue]);
+    if (onValueChange) {
+      onValueChange(currentValue || "");
+    }
+  }, [isOpen, onIsOpen, onValueChange, currentValue]);
 
-    const variants = cn(styles.selectRoot, className);
+  const variants = cn(styles.selectRoot, className);
 
-    return (
-      <SelectContext.Provider
-        value={{
-          isOpen,
-          selected,
-          setIsOpen,
-          setSelected,
-          currentValue,
-          setCurrentValue,
-        }}
-      >
-        <div className={variants} ref={rootRef} {...rest}>
-          {children}
-        </div>
-      </SelectContext.Provider>
-    );
-  },
-);
-
+  return (
+    <SelectContext.Provider
+      value={{
+        isOpen,
+        selected,
+        setIsOpen,
+        setSelected,
+        currentValue,
+        setCurrentValue,
+      }}
+    >
+      <div className={variants} ref={rootRef} {...rest}>
+        {children}
+      </div>
+    </SelectContext.Provider>
+  );
+};
 interface SelectTriggerProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
 const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(

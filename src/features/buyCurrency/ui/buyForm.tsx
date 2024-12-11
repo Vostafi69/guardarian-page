@@ -13,16 +13,18 @@ import { useFakeApi } from "../model/fakeApi";
 import { Input } from "@/shared/ui/input";
 import { CurrencySelect } from "./currencySelect";
 import { BuyDto, getCryptoCurrenciesMock, getCurrenciesMock } from "@/entities";
+import { inputDigitsOnly } from "@/shared/helpers/inputDigitsOnly";
 import cn from "classnames";
 import styles from "./buyForm.module.scss";
 
 interface BuyFormProps {
   className?: string;
+  formEvent: "BUY" | "SELL" | "SWAP";
 }
 
-export const BuyForm: FC<BuyFormProps> = ({ className }) => {
+export const BuyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
   const [send, setSend] = useState<number>(300);
-  const [get, setGet] = useState<number>(0.02935551);
+  const [get] = useState<number>(0.02935551);
   const [repeat, setReapeat] = useState<boolean>(false);
   const [sendTicker, setSendTicker] = useState<string>("USD");
   const [getTicker, setGetTicker] = useState<string>("GBR");
@@ -31,7 +33,7 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
   const { data } = useMemo(() => getCurrenciesMock(), []);
   const { data: cryptoData } = useMemo(() => getCryptoCurrenciesMock(), []);
 
-  const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     transaction<BuyDto>({
@@ -52,7 +54,7 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
   const variants = cn(styles.buyForm, className);
 
   return (
-    <form className={variants}>
+    <form className={variants} onSubmit={handleSubmit}>
       <div className={styles.itemsList}>
         <div className={styles.item}>
           <div className={styles.field}>
@@ -63,17 +65,26 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
               className={styles.input}
               value={send}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setSend(e.target.value as unknown as number)
+                setSend(inputDigitsOnly(e.target.value) as unknown as number)
               }
               type="text"
               id="send"
             />
           </div>
-          <CurrencySelect
-            data={data}
-            defaultValue="USD"
-            handleChange={handleChangeSendTicker}
-          />
+          {formEvent === "BUY" && (
+            <CurrencySelect
+              data={data}
+              defaultValue={"USD"}
+              handleChange={handleChangeSendTicker}
+            />
+          )}
+          {formEvent !== "BUY" && (
+            <CurrencySelect
+              data={cryptoData}
+              defaultValue={"BTC"}
+              handleChange={handleChangeSendTicker}
+            />
+          )}
         </div>
         <div className={styles.desc}>
           <div className={styles.decor}></div>
@@ -95,27 +106,42 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
               className={styles.input}
               value={"~" + get}
               disabled
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setGet(e.target.value as unknown as number)
-              }
               type="text"
               id="get"
             />
           </div>
-          <CurrencySelect
-            data={cryptoData}
-            defaultValue="BTC"
-            handleChange={handleChangeGetTicker}
-          />
+          {formEvent === "BUY" && (
+            <CurrencySelect
+              data={cryptoData}
+              defaultValue={"BTC"}
+              handleChange={handleChangeGetTicker}
+            />
+          )}
+          {formEvent === "SELL" && (
+            <CurrencySelect
+              data={data}
+              defaultValue={"EUR"}
+              handleChange={handleChangeGetTicker}
+            />
+          )}
+          {formEvent === "SWAP" && (
+            <CurrencySelect
+              data={cryptoData}
+              defaultValue={"XMR"}
+              handleChange={handleChangeGetTicker}
+            />
+          )}
         </div>
-        <div className={styles.switch}>
-          <Label className={styles.switchLabel}>Repeat payment</Label>
-          <Switch.Root checked={repeat} onChange={(e) => setReapeat(e)}>
-            <Switch.Thumb />
-          </Switch.Root>
-        </div>
+        {formEvent === "BUY" && (
+          <div className={styles.switch}>
+            <Label className={styles.switchLabel}>Repeat payment</Label>
+            <Switch.Root checked={repeat} onChange={(e) => setReapeat(e)}>
+              <Switch.Thumb />
+            </Switch.Root>
+          </div>
+        )}
       </div>
-      <Button className={styles.button} onClick={handleSubmit} isFluid>
+      <Button type="submit" className={styles.button} isFluid>
         Become a partner
       </Button>
     </form>
