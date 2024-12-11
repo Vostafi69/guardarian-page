@@ -19,8 +19,10 @@ import {
 } from "@/entities";
 import { inputDigitsOnly } from "@/shared/helpers/inputDigitsOnly";
 import { CurrencyActionsType } from "@/entities/currency/model/types";
+import { AnimatePresence, motion } from "motion/react";
 import cn from "classnames";
 import styles from "./currencyForm.module.scss";
+import { motionConfig } from "@/shared/libs/motionConfig";
 
 interface BuyFormProps {
   className?: string;
@@ -77,20 +79,26 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
               id="send"
             />
           </div>
-          {formEvent === "BUY" && (
-            <CurrencySelect
-              data={data}
-              defaultValue={"USD"}
-              handleChange={handleChangeSendTicker}
-            />
-          )}
-          {formEvent !== "BUY" && (
-            <CurrencySelect
-              data={cryptoData}
-              defaultValue={"BTC"}
-              handleChange={handleChangeSendTicker}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            {formEvent !== "BUY" && (
+              <motion.div key={formEvent} {...motionConfig}>
+                <CurrencySelect
+                  data={cryptoData}
+                  defaultValue={"BTC"}
+                  handleChange={handleChangeSendTicker}
+                />
+              </motion.div>
+            )}
+            {formEvent === "BUY" && (
+              <motion.div key={formEvent} {...motionConfig}>
+                <CurrencySelect
+                  data={data}
+                  defaultValue={"USD"}
+                  handleChange={handleChangeSendTicker}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
         <div className={styles.desc}>
           <div className={styles.decor}></div>
@@ -116,36 +124,48 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
               id="get"
             />
           </div>
-          {formEvent === "BUY" && (
-            <CurrencySelect
-              data={cryptoData}
-              defaultValue={"BTC"}
-              handleChange={handleChangeGetTicker}
-            />
-          )}
-          {formEvent === "SELL" && (
-            <CurrencySelect
-              data={data}
-              defaultValue={"EUR"}
-              handleChange={handleChangeGetTicker}
-            />
-          )}
-          {formEvent === "SWAP" && (
-            <CurrencySelect
-              data={cryptoData}
-              defaultValue={"XMR"}
-              handleChange={handleChangeGetTicker}
-            />
-          )}
+          <AnimatePresence mode="wait">
+            {formEvent === "BUY" && (
+              <motion.div key={formEvent} {...motionConfig}>
+                <CurrencySelect
+                  data={cryptoData}
+                  defaultValue={"BTC"}
+                  handleChange={handleChangeGetTicker}
+                />
+              </motion.div>
+            )}
+            {formEvent === "SELL" && (
+              <motion.div key={formEvent} {...motionConfig}>
+                <CurrencySelect
+                  data={data}
+                  defaultValue={"EUR"}
+                  handleChange={handleChangeGetTicker}
+                />
+              </motion.div>
+            )}
+            {formEvent === "SWAP" && (
+              <motion.div key={formEvent} {...motionConfig}>
+                <CurrencySelect
+                  data={cryptoData}
+                  defaultValue={"XMR"}
+                  handleChange={handleChangeGetTicker}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        {formEvent === "BUY" && (
-          <div className={styles.switch}>
-            <Label className={styles.switchLabel}>Repeat payment</Label>
-            <Switch.Root checked={repeat} onChange={(e) => setReapeat(e)}>
-              <Switch.Thumb />
-            </Switch.Root>
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          <motion.div key={formEvent} {...motionConfig}>
+            {formEvent === "BUY" && (
+              <div className={styles.switch}>
+                <Label className={styles.switchLabel}>Repeat payment</Label>
+                <Switch.Root checked={repeat} onChange={(e) => setReapeat(e)}>
+                  <Switch.Thumb />
+                </Switch.Root>
+              </div>
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
       <Button type="submit" className={styles.button} isFluid>
         Become a partner
