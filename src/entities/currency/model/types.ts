@@ -6,3 +6,11 @@ export interface CurrencyModel {
     alt: string;
   };
 }
+
+export type BuyDto = {
+  get: number;
+  send: number;
+  repeat: boolean;
+  getTicker: string;
+  sendTicker: string;
+};

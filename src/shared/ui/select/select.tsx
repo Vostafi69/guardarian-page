@@ -13,6 +13,7 @@ import {
   useEffect,
   useRef,
   useState,
+  MouseEvent,
 } from "react";
 import arrow from "@/assets/images/arrow-b.svg";
 import { useClickOutside } from "@/shared/hooks/useClickOutside";
@@ -39,7 +40,7 @@ const useSelectContext = () => {
 
 interface SelectRootProps extends HTMLAttributes<HTMLDivElement> {
   onIsOpen?: (isOpen: boolean) => void;
-  onValueChange?: (value: ReactNode) => void;
+  onValueChange?: (value: string) => void;
   defaultValue?: string;
 }
 
@@ -71,9 +72,9 @@ const SelectRoot: FC<SelectRootProps> = ({
     }
 
     if (onValueChange) {
-      onValueChange(selected);
+      onValueChange(currentValue || "");
     }
-  }, [isOpen, onIsOpen]);
+  }, [isOpen, onIsOpen, onValueChange, currentValue]);
 
   const variants = cn(styles.selectRoot, className);
 
@@ -101,7 +102,8 @@ const SelectTrigger = forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ children, className, ...rest }, ref) => {
     const { selected, setIsOpen, isOpen } = useSelectContext();
 
-    const handleClick = () => {
+    const handleClick = (e: MouseEvent<HTMLElement>) => {
+      e.preventDefault();
       setIsOpen((prev) => !prev);
     };
 
@@ -180,9 +182,11 @@ const SelectOption: FC<SelectOptionProps> = ({
     currentValue,
   } = useSelectContext();
 
-  if (selected !== children && currentValue === value) {
-    setSelected(children);
-  }
+  useEffect(() => {
+    if (selected !== children && currentValue === value) {
+      setSelected(children);
+    }
+  }, [setSelected, selected, currentValue, value, children]);
 
   const variants = cn(
     styles.selectOption,
@@ -192,7 +196,9 @@ const SelectOption: FC<SelectOptionProps> = ({
     className,
   );
 
-  const handleClick = () => {
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
     if (onChange) {
       onChange(value);
     }

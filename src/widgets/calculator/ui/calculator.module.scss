@@ -7,33 +7,3 @@
   width: 100%;
   flex-grow: 1;
 }
-
-.calculatorTrigger {
-  & .currencyName {
-    display: none;
-  }
-
-  & .currencyTicker {
-    font-size: 2.4rem !important;
-    text-align: left;
-  }
-}
-
-.currency {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  & .currencyImg {
-    margin-right: 0.8rem;
-    aspect-ratio: 1 / 1;
-    width: 2rem;
-  }
-}
-
-.currencyTicker {
-  color: var(--gd-blue-dark);
-  font-size: 1.6rem;
-  width: 100%;
-  max-width: 8rem;
-}

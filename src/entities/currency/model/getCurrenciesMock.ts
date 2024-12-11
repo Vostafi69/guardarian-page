@@ -2,12 +2,15 @@ import { CurrencyModel } from "./types";
 import eur from "@/assets/images/eur.svg";
 import usd from "@/assets/images/usd.svg";
 import gbr from "@/assets/images/gbr.svg";
+import btc from "@/assets/images/btc.svg";
+import eth from "@/assets/images/eth.svg";
+import xmr from "@/assets/images/xmr.svg";
 
-interface MockResponce {
-  data: CurrencyModel[];
+interface MockResponce<T> {
+  data: T[];
 }
 
-export const getCurrenciesMock = (): MockResponce => {
+export const getCurrenciesMock = (): MockResponce<CurrencyModel> => {
   const CURRENCIES = [
     {
       img: {
@@ -32,6 +35,39 @@ export const getCurrenciesMock = (): MockResponce => {
       },
       name: "Euro",
       ticker: "EUR",
+    },
+  ];
+
+  return {
+    data: CURRENCIES,
+  };
+};
+
+export const getCryptoCurrenciesMock = (): MockResponce<CurrencyModel> => {
+  const CURRENCIES = [
+    {
+      img: {
+        alt: "BTC",
+        src: btc,
+      },
+      name: "Bitcoin",
+      ticker: "BTC",
+    },
+    {
+      img: {
+        alt: "XMR",
+        src: xmr,
+      },
+      name: "Monero",
+      ticker: "XMR",
+    },
+    {
+      img: {
+        alt: "ETH",
+        src: eth,
+      },
+      name: "Ethereum",
+      ticker: "ETH",
     },
   ];
 

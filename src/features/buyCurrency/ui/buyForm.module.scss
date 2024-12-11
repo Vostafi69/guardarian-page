@@ -1,0 +1,166 @@
+.buyForm {
+  & .button {
+    margin-top: 2.8rem;
+  }
+
+  & .switchLabel {
+    color: var(--gd-blue-dark);
+  }
+
+  & .label {
+    line-height: 2.4rem;
+  }
+
+  & .switch {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+
+  & .itemsList {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 0.8rem;
+    border: 1px solid var(--gd-grey);
+    position: relative;
+  }
+
+  & .field {
+    background-color: var(--gd-grey-light);
+    display: flex;
+    flex-direction: column;
+    padding: 0.8rem 1.6rem;
+    border-right: 1px solid var(--gd-grey);
+    border-radius: 0.8rem 0 0 0.8rem;
+    overflow: hidden;
+  }
+
+  & .input {
+    width: 100%;
+    background-color: transparent;
+    line-height: 3rem;
+  }
+
+  & .getField {
+    background-color: var(--gd-white);
+  }
+
+  & .selectContainer {
+    width: 16rem;
+    flex-shrink: 0;
+    padding-left: 1.2rem;
+    position: static;
+  }
+
+  & .select {
+    width: 100%;
+    height: fit-content;
+    position: static;
+  }
+
+  & .trigger {
+    & p {
+      display: none !important;
+    }
+
+    & .currencyTicker {
+      font-size: 2.4rem !important;
+      text-align: left;
+    }
+
+    & > div > div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      & > img {
+        width: 2.4rem;
+        aspect-ratio: 1 / 1;
+        flex-shrink: 0;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+
+  & .selectVireport {
+    top: 7rem;
+  }
+
+  & .currency {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  & .currencyImg {
+    margin-right: 0.8rem;
+    aspect-ratio: 1 / 1;
+    width: 2rem;
+  }
+
+  & .currencyTicker {
+    color: var(--gd-blue-dark);
+    font-size: 1.6rem;
+    width: 100%;
+    max-width: 8rem;
+  }
+}
+
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  position: relative;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  padding-left: 3rem;
+
+  & .decor {
+    position: absolute;
+    background-color: var(--gd-grey);
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    left: 1.45rem;
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      left: -0.25rem;
+      width: 0.6rem;
+      height: 0.6rem;
+      background-color: var(--gd-grey);
+      border-radius: 10rem;
+    }
+
+    &::after {
+      top: 2rem;
+    }
+
+    &::before {
+      bottom: 2rem;
+    }
+  }
+
+  & .price {
+    color: var(--gd-blue-dark);
+    margin-left: 0.4rem;
+  }
+
+  & .label {
+    border-bottom: 1px dashed var(--gd-blue-light);
+  }
+
+  & .block {
+    font-size: 1.2rem;
+    color: var(--gd-grey-dark);
+  }
+}
