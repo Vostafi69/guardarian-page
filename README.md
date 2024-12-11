@@ -1,50 +1,69 @@
-# React + TypeScript + Vite
+#Guardarian ("For business" page)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Logo or Banner](./examples/banner.png)
 
-Currently, two official plugins are available:
+## 🚀 Описание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"For business" страница ориентирована на бизнес-пользователей и включает новые элементы интерфейса, согласованные с дизайн-макетом.
 
-## Expanding the ESLint configuration
+## 🛠️ Стек технологий
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**
+- **TypeScript**
+- **SCSS/Modules**
 
-- Configure the top-level `parserOptions` property like this:
+## 📦 Установка и запуск
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+### Требования
+
+> [!IMPORTANT]
+> Node.js >= 20
+> yarn >= 1.22.22
+
+### Установка
+
+```bash
+# Клонируйте репозиторий
+$ git clone https://github.com/Vostafi69/guardarian-page.git
+
+# Перейдите в директорию проекта
+$ cd guardarian-page
+
+# Установите зависимости
+$ yarn
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Запуск в режиме разработки
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+```bash
+$ docker compose up -d
+# Или просто
+$ yarn dev
 ```
+
+Приложение будет запущено на [http://localhost:3000](http://localhost:3000).
+
+### Сборка для продакшена
+
+```bash
+$ yarn build
+```
+
+Собранные файлы будут находиться в папке `build`.
+
+````
+## 📂 Структура проекта
+
+```plaintext
+/public           # Шрифты
+src/
+├── assets/       # Изображения
+├── app/          # Главный слой с глобальными настройками
+├── pages/        # Страницы приложения
+├── widgets/      # Готовые модули приложения
+├── features      # Фичи
+├── entities      # Бищнес сущности, преимущественно с бэкэнда
+├── shared/       # Базовые компоненты, хелперы и прочее
+````
+
+_Сделано в качестве стажировочного задания для EverCode ❤️._
