@@ -1,5 +1,6 @@
 .calculator {
   padding: 2.4rem;
+  padding-top: 1.6rem;
   border-radius: 2.4rem;
   border: 1px solid var(--gd-grey);
   background-color: var(--gd-white);
@@ -21,6 +22,10 @@
     font-size: 2.4rem;
     color: var(--gd-blue-dark);
     position: relative;
+
+    @include md-d {
+      font-size: 2rem;
+    }
   }
 
   & .underline {
@@ -31,5 +36,10 @@
     height: 0.2rem;
     background-color: var(--gd-blue-light);
     border-radius: 0.4rem;
+  }
+
+  @include md-d {
+    max-width: none;
+    padding: 1.6rem 1.6rem 2.4rem;
   }
 }

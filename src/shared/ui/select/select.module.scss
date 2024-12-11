@@ -59,18 +59,21 @@
   flex-direction: row;
   align-items: center;
   gap: 0.8rem;
-
-  & .selectTriggerContent {
-    width: 10rem;
-  }
+  width: 100%;
+  justify-content: space-between;
 
   .selectTriggerIcon {
     width: 2.4rem;
-    height: 2.4rem;
+    aspect-ratio: 1 / 1;
     background-color: var(--gd-blue-soft);
     border-radius: 10rem;
     @include flex-center;
     transition: transform var(--transition-function) 0.3s;
+    flex-shrink: 0;
+
+    @include md-d {
+      width: 1.6rem;
+    }
   }
 
   & .open {

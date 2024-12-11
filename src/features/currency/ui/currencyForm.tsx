@@ -31,7 +31,6 @@ interface BuyFormProps {
 
 export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
   const [send, setSend] = useState<number>(300);
-  const [get] = useState<number>(0.02935551);
   const [repeat, setReapeat] = useState<boolean>(false);
   const [sendTicker, setSendTicker] = useState<string>("USD");
   const [getTicker, setGetTicker] = useState<string>("GBR");
@@ -44,7 +43,6 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
     e.preventDefault();
 
     transaction<ExampleDto>({
-      get,
       send,
       repeat,
       getTicker,
@@ -59,7 +57,7 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
     [],
   );
 
-  const variants = cn(styles.buyForm, className);
+  const variants = cn(styles.currencyForm, className);
 
   return (
     <form className={variants} onSubmit={handleSubmit}>
@@ -93,7 +91,7 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
               <motion.div key={formEvent} {...motionConfig}>
                 <CurrencySelect
                   data={data}
-                  defaultValue={"USD"}
+                  defaultValue={"EUR"}
                   handleChange={handleChangeSendTicker}
                 />
               </motion.div>
@@ -118,7 +116,7 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
             </Label>
             <Input
               className={styles.input}
-              value={"~" + get}
+              value={"~" + (send / 100_639_6).toFixed(8)}
               disabled
               type="text"
               id="get"

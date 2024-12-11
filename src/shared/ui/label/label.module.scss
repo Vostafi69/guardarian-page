@@ -1,4 +1,8 @@
 .label {
   font-size: 1.4rem;
   color: var(--gd-grey-dark);
+
+  @include md-d {
+    font-size: 1.2rem;
+  }
 }

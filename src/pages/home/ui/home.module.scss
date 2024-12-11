@@ -27,9 +27,11 @@
 
     @include md-d {
       margin-top: 4rem;
+      gap: 4rem;
+      margin-bottom: 4rem;
     }
 
-    @include lg-d {
+    @include md-d {
       flex-direction: column;
     }
   }
@@ -87,6 +89,14 @@
   & .calculatorContainer {
     max-width: 42.4rem;
     width: 100%;
+
+    @include md-d {
+      max-width: none;
+    }
+  }
+
+  @include md-d {
+    height: auto;
   }
 }
 
