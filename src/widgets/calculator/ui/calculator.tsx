@@ -1,14 +1,15 @@
 import { forwardRef, HTMLAttributes, useState } from "react";
 import { Card } from "@/shared/ui/card";
+import { CurrencyForm } from "@/features";
+import { CurrencyActionsType } from "@/entities/currency/model/types";
 import cn from "classnames";
 import styles from "./calculator.module.scss";
-import { BuyForm } from "@/features";
 
 interface CalculatorProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
   ({ className, ...rest }, ref) => {
-    const [activeTab, setActiveTab] = useState<"BUY" | "SELL" | "SWAP">("BUY");
+    const [activeTab, setActiveTab] = useState<CurrencyActionsType>("BUY");
 
     const variants = cn(styles.calculator, className);
 
@@ -45,7 +46,7 @@ export const Calculator = forwardRef<HTMLDivElement, CalculatorProps>(
             </button>
           </div>
           <div className={styles.formContainer}>
-            <BuyForm formEvent={activeTab} />
+            <CurrencyForm formEvent={activeTab} />
           </div>
         </Card.Body>
       </Card.Root>

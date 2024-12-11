@@ -1,1 +1,1 @@
-export { BuyForm } from "./buyCurrency";
+export { CurrencyForm } from "./currency";

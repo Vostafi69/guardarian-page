@@ -12,17 +12,22 @@ import { Switch } from "@/shared/ui/switch";
 import { useFakeApi } from "../model/fakeApi";
 import { Input } from "@/shared/ui/input";
 import { CurrencySelect } from "./currencySelect";
-import { BuyDto, getCryptoCurrenciesMock, getCurrenciesMock } from "@/entities";
+import {
+  ExampleDto,
+  getCryptoCurrenciesMock,
+  getCurrenciesMock,
+} from "@/entities";
 import { inputDigitsOnly } from "@/shared/helpers/inputDigitsOnly";
+import { CurrencyActionsType } from "@/entities/currency/model/types";
 import cn from "classnames";
-import styles from "./buyForm.module.scss";
+import styles from "./currencyForm.module.scss";
 
 interface BuyFormProps {
   className?: string;
-  formEvent: "BUY" | "SELL" | "SWAP";
+  formEvent: CurrencyActionsType;
 }
 
-export const BuyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
+export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
   const [send, setSend] = useState<number>(300);
   const [get] = useState<number>(0.02935551);
   const [repeat, setReapeat] = useState<boolean>(false);
@@ -36,12 +41,13 @@ export const BuyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    transaction<BuyDto>({
+    transaction<ExampleDto>({
       get,
       send,
       repeat,
       getTicker,
       sendTicker,
+      action: formEvent,
     });
   };
 

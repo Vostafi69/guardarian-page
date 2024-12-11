@@ -1,6 +1,6 @@
 export {
   type CurrencyModel,
-  type BuyDto,
+  type ExampleDto,
   getCurrenciesMock,
   getCryptoCurrenciesMock,
 } from "./currency";

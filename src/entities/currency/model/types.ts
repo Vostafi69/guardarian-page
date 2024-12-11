@@ -7,10 +7,13 @@ export interface CurrencyModel {
   };
 }
 
-export type BuyDto = {
+export type CurrencyActionsType = "BUY" | "SELL" | "SWAP";
+
+export type ExampleDto = {
   get: number;
   send: number;
-  repeat: boolean;
+  repeat?: boolean;
   getTicker: string;
   sendTicker: string;
+  action: CurrencyActionsType;
 };

@@ -1,8 +1,8 @@
 import { memo } from "react";
-import styles from "./buyForm.module.scss";
 import { Select } from "@/shared/ui/select";
 import { CurrencyModel } from "@/entities";
 import { useLockLennisScroll } from "@/shared/hooks/useLockLennisScroll";
+import styles from "./currencyForm.module.scss";
 
 interface CurrencySelectProps {
   handleChange: (value: string) => void;
