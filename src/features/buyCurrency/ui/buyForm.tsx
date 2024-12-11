@@ -1,12 +1,18 @@
 import { Button } from "@/shared/ui/button";
-import { ChangeEvent, FC, FormEvent, useCallback, useState } from "react";
-import { useLockLennisScroll } from "@/shared/hooks/useLockLennisScroll";
+import {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { Label } from "@/shared/ui/label";
 import { Switch } from "@/shared/ui/switch";
 import { useFakeApi } from "../model/fakeApi";
-import { BuyDto, getCryptoCurrenciesMock, getCurrenciesMock } from "@/entities";
-import { Select } from "@/shared/ui/select";
 import { Input } from "@/shared/ui/input";
+import { CurrencySelect } from "./currencySelect";
+import { BuyDto, getCryptoCurrenciesMock, getCurrenciesMock } from "@/entities";
 import cn from "classnames";
 import styles from "./buyForm.module.scss";
 
@@ -20,10 +26,10 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
   const [repeat, setReapeat] = useState<boolean>(false);
   const [sendTicker, setSendTicker] = useState<string>("USD");
   const [getTicker, setGetTicker] = useState<string>("GBR");
-  const { handleLennisScroll } = useLockLennisScroll();
   const { transaction } = useFakeApi();
-  const { data } = getCurrenciesMock();
-  const { data: cryptoData } = getCryptoCurrenciesMock();
+
+  const { data } = useMemo(() => getCurrenciesMock(), []);
+  const { data: cryptoData } = useMemo(() => getCryptoCurrenciesMock(), []);
 
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -38,7 +44,10 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
   };
 
   const handleChangeGetTicker = useCallback((e: string) => setGetTicker(e), []);
-  const handleChangeTicker = useCallback((e: string) => setSendTicker(e), []);
+  const handleChangeSendTicker = useCallback(
+    (e: string) => setSendTicker(e),
+    [],
+  );
 
   const variants = cn(styles.buyForm, className);
 
@@ -60,33 +69,11 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
               id="send"
             />
           </div>
-          <div className={styles.selectContainer}>
-            <Select.Root
-              className={styles.select}
-              defaultValue="USD"
-              onIsOpen={handleLennisScroll}
-              onValueChange={handleChangeTicker}
-            >
-              <Select.Trigger className={styles.trigger} />
-              <Select.ViewPort className={styles.selectVireport}>
-                <Select.OptionsList>
-                  {data.map(({ img, name, ticker }, index) => (
-                    <Select.Option value={ticker} key={index}>
-                      <div className={styles.currency}>
-                        <img
-                          className={styles.currencyImg}
-                          src={img.src}
-                          alt={img.alt}
-                        />
-                        <span className={styles.currencyTicker}>{ticker}</span>
-                        <p className={styles.currencyName}>{name}</p>
-                      </div>
-                    </Select.Option>
-                  ))}
-                </Select.OptionsList>
-              </Select.ViewPort>
-            </Select.Root>
-          </div>
+          <CurrencySelect
+            data={data}
+            defaultValue="USD"
+            handleChange={handleChangeSendTicker}
+          />
         </div>
         <div className={styles.desc}>
           <div className={styles.decor}></div>
@@ -115,33 +102,11 @@ export const BuyForm: FC<BuyFormProps> = ({ className }) => {
               id="get"
             />
           </div>
-          <div className={styles.selectContainer}>
-            <Select.Root
-              className={styles.select}
-              defaultValue="BTC"
-              onIsOpen={handleLennisScroll}
-              onValueChange={handleChangeGetTicker}
-            >
-              <Select.Trigger className={styles.trigger} />
-              <Select.ViewPort className={styles.selectVireport}>
-                <Select.OptionsList>
-                  {cryptoData.map(({ img, name, ticker }, index) => (
-                    <Select.Option value={ticker} key={index}>
-                      <div className={styles.currency}>
-                        <img
-                          className={styles.currencyImg}
-                          src={img.src}
-                          alt={img.alt}
-                        />
-                        <span className={styles.currencyTicker}>{ticker}</span>
-                        <p className={styles.currencyName}>{name}</p>
-                      </div>
-                    </Select.Option>
-                  ))}
-                </Select.OptionsList>
-              </Select.ViewPort>
-            </Select.Root>
-          </div>
+          <CurrencySelect
+            data={cryptoData}
+            defaultValue="BTC"
+            handleChange={handleChangeGetTicker}
+          />
         </div>
         <div className={styles.switch}>
           <Label className={styles.switchLabel}>Repeat payment</Label>
