@@ -5,10 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.dev
+      args:
+        VITE_PORT: ${VITE_PORT}
     container_name: guardarian-page
     ports:
-      - "3000:3000"
+      - "${EXPOSE_PORT}:${VITE_PORT}"
     volumes:
       - .:/app
+      - /app/node_modules
     stdin_open: true
     tty: true

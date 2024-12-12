@@ -34,7 +34,7 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
   const [repeat, setReapeat] = useState<boolean>(false);
   const [sendTicker, setSendTicker] = useState<string>("USD");
   const [getTicker, setGetTicker] = useState<string>("GBR");
-  const { transaction } = useFakeApi();
+  const { transaction, fakeExchangeRatesApi } = useFakeApi();
 
   const { data } = useMemo(() => getCurrenciesMock(), []);
   const { data: cryptoData } = useMemo(() => getCryptoCurrenciesMock(), []);
@@ -116,7 +116,16 @@ export const CurrencyForm: FC<BuyFormProps> = ({ className, formEvent }) => {
             </Label>
             <Input
               className={styles.input}
-              value={"~" + (send / 100_639_6).toFixed(8)}
+              value={
+                "~" +
+                parseFloat(
+                  fakeExchangeRatesApi(
+                    sendTicker as any,
+                    getTicker as any,
+                    send,
+                  ).toFixed(6),
+                )
+              }
               disabled
               type="text"
               id="get"
