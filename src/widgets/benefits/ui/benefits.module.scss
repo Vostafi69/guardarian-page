@@ -28,6 +28,14 @@
     }
   }
 
+  & .cardRoot {
+    position: relative;
+
+    &:hover .cardBorderLine {
+      stroke-width: 0.1rem;
+    }
+  }
+
   & .card {
     display: grid;
     grid-template-columns: min-content 1fr;
@@ -37,6 +45,20 @@
 
     @include md-d {
       grid-template-columns: 1fr;
+    }
+
+    & .cardBorder {
+      position: absolute;
+      inset: 0;
+    }
+
+    & .cardBorderLine {
+      stroke-dasharray: 260;
+      stroke-width: 0rem;
+      fill: transparent;
+      stroke: var(--gd-blue-light);
+      animation: svgAnimation 2.1s linear infinite;
+      transition: stroke-width ease 0.3s;
     }
   }
 
@@ -60,5 +82,14 @@
 
   @include sm-d {
     gap: 1.6rem;
+  }
+}
+
+@keyframes svgAnimation {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 1000;
   }
 }

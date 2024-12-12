@@ -14,8 +14,23 @@ const BenefitCard = forwardRef<HTMLDivElement, BenefitCardProps>(
     const { content, img, title } = benefit;
 
     return (
-      <Card.Root ref={ref}>
+      <Card.Root className={styles.cardRoot} ref={ref}>
         <Card.Body className={styles.card}>
+          <svg
+            className={styles.cardBorder}
+            height="100%"
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              className={styles.cardBorderLine}
+              rx="16"
+              ry="16"
+              height="100%"
+              width="100%"
+              strokeLinejoin="round"
+            />
+          </svg>
           <div className={styles.cardImgWrap}>
             <img className={styles.cardImg} src={img.src} alt={img.alt} />
           </div>
