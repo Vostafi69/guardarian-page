@@ -10,10 +10,16 @@ interface LayoutProps {
 export const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <div className={styles.layout}>
-      <ScrollProgress />
-      <Header />
-      {children}
-      <Footer />
+      <div className={styles.layoutInner}>
+        <ScrollProgress />
+        <Header />
+        {children}
+      </div>
+      <div className={styles.stickyFooter}>
+        <div className={styles.stickyFooterInner}>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
 };
