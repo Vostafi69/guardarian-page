@@ -1,10 +1,22 @@
 .layout {
   min-height: 100vh;
   width: 100%;
+  animation: appearance var(--transition-function) 1 1s;
+}
+
+@keyframes appearance {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .layoutInner {
   background-color: var(--gd-white);
+  position: relative;
+  z-index: 1;
 }
 
 .stickyFooter {
@@ -16,7 +28,6 @@
   position: fixed;
   width: 100%;
   bottom: 0;
-  z-index: -1;
 
   @include xl-d {
     position: static;

@@ -7,7 +7,62 @@
     <title>For Business</title>
   </head>
   <body>
-    <div id="root"></div>
+    <style>
+      .loader {
+        position: fixed;
+        inset: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+      .loader__img {
+        -webkit-animation: pulse 4s infinite;
+        animation: pulse 4s infinite;
+      }
+      @-webkit-keyframes pulse {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        50% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+      @keyframes pulse {
+        0% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+
+        50% {
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+    </style>
+    <div id="root">
+      <div class="loader">
+        <img src="/logo.svg" class="loader__img" alt="Logo" />
+      </div>
+    </div>
     <script type="module" src="/src/app/main.tsx"></script>
   </body>
 </html>
