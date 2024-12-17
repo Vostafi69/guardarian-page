@@ -5,7 +5,7 @@ export const useBenefitsAnimation = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "center center"],
+    offset: ["center end", "center center"],
   });
   const scaleTopLeft = useTransform(scrollYProgress, [0, 0.5], [-200, 0]);
   const scaleTopRight = useTransform(scrollYProgress, [0, 0.5], [200, 0]);
